@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seahorse OS</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/seahorse-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- boot sequence, hidden after js/main.js finishes the fake POST -->
+  <div id="boot-screen">
+    <img src="assets/seahorse-logo.jpg" alt="" id="boot-logo">
+    <div id="boot-ping"></div>
+    <div id="boot-text">SEAHORSE OS</div>
+    <div id="boot-status">initializing kernel modules&hellip;</div>
+    <div id="boot-bar"><div id="boot-bar-fill"></div></div>
+  </div>
+
+  <!-- desktop root, everything gets mounted into here at runtime -->
+  <div id="desktop">
+    <div id="desktop-icons"></div>
+    <div id="window-layer"></div>
+  </div>
+
+  <!-- taskbar -->
+  <div id="taskbar">
+    <button id="start-btn" aria-label="Start menu">
+      <img src="assets/seahorse-logo.jpg" alt="">
+    </button>
+    <div id="taskbar-search">
+      <input type="text" id="taskbar-search-input" placeholder="Search Seahorse OS">
+    </div>
+    <div id="taskbar-running"></div>
+    <div id="taskbar-tray">
+      <span id="tray-clock">00:00</span>
+    </div>
+  </div>
+
+  <!-- start menu, populated from the app registry in main.js -->
+  <div id="start-menu">
+    <div id="start-menu-header">
+      <img src="assets/seahorse-logo.jpg" alt="">
+      <div>
+        <div id="start-menu-title">Seahorse OS</div>
+        <div id="start-menu-sub">build 0.4.2-dev</div>
+      </div>
+    </div>
+    <div id="start-menu-search">
+      <input type="text" id="start-search-input" placeholder="Type to search apps&hellip;">
+    </div>
+    <div id="start-menu-apps"></div>
+  </div>
+  <div id="start-menu-overlay"></div>
+
+  <!-- context menu for desktop right-click, kept generic so any app can reuse it -->
+  <ul id="context-menu"></ul>
+
+  <!-- scripts, order matters here since there's no bundler -->
+  <script src="js/vfs.js"></script>
+  <script src="js/windowManager.js"></script>
+  <script src="js/taskbar.js"></script>
+  <script src="js/startMenu.js"></script>
+  <script src="js/apps/fileExplorer.js"></script>
+  <script src="js/apps/terminal.js"></script>
+  <script src="js/apps/settings.js"></script>
+  <script src="js/apps/messages.js"></script>
+  <script src="js/apps/browser.js"></script>
+  <script src="js/apps/blooket.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
